@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "../../_components/container";
 import { CtaBand } from "../../_components/cta-band";
+import { JsonLd } from "../../_components/json-ld";
 import {
   CivilEnvironmentalIcon,
   ConstructionManagementIcon,
@@ -12,7 +13,8 @@ import {
   StructuralEngineeringIcon,
   ArrowRightIcon,
 } from "../../_components/icons";
-import { services, site } from "../../_lib/content";
+import { services } from "../../_lib/content";
+import { breadcrumbJsonLd, pageMetadata, serviceJsonLd } from "../../_lib/seo";
 
 const serviceIcons = {
   "master-planning": MasterPlanningIcon,
@@ -32,16 +34,13 @@ export async function generateMetadata(
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
 
-  return {
+  return pageMetadata({
     title: service.name,
     description: service.summary,
-    alternates: { canonical: `/services/${service.slug}` },
-    openGraph: {
-      title: `${service.name} | ${site.name}`,
-      description: service.summary,
-      images: [{ url: service.image }],
-    },
-  };
+    path: `/services/${service.slug}`,
+    image: service.image,
+    imageAlt: service.imageAlt,
+  });
 }
 
 export default async function ServiceDetailPage(
@@ -54,9 +53,16 @@ export default async function ServiceDetailPage(
   const service = services[index];
   const Icon = serviceIcons[service.slug];
   const other = services.filter((s) => s.slug !== service.slug);
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: service.name, path: `/services/${service.slug}` },
+  ]);
 
   return (
     <>
+      <JsonLd data={breadcrumbs} />
+      <JsonLd data={serviceJsonLd(service)} />
       <section className="relative overflow-hidden bg-forest-deep">
         <div className="absolute inset-0">
           <Image
@@ -92,14 +98,16 @@ export default async function ServiceDetailPage(
 
       <section className="py-20 sm:py-28">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
-          <div className="flex flex-col gap-6">
+          <div data-aos="fade-right" className="flex flex-col gap-6">
             <p className="text-base leading-relaxed text-ink/75 sm:text-lg">
               {service.intro}
             </p>
             <ul className="flex flex-col gap-3">
-              {service.details.map((detail) => (
+              {service.details.map((detail, i) => (
                 <li
                   key={detail}
+                  data-aos="fade-up"
+                  data-aos-delay={i * 75}
                   className="flex items-start gap-3 rounded-xl border border-line bg-paper-dim p-4 text-sm leading-relaxed text-ink/75"
                 >
                   <ShieldIcon className="mt-0.5 h-4 w-4 shrink-0 text-forest" />
@@ -109,7 +117,7 @@ export default async function ServiceDetailPage(
             </ul>
           </div>
 
-          <figure className="flex flex-col gap-3">
+          <figure data-aos="fade-left" className="flex flex-col gap-3">
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-line">
               <Image
                 src={service.image}
@@ -128,10 +136,12 @@ export default async function ServiceDetailPage(
         <Container className="flex flex-col gap-8">
           <h2 className="text-xl font-semibold tracking-tight">Other services</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {other.map((s) => (
+            {other.map((s, i) => (
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
                 className="group flex flex-col gap-2 rounded-xl border border-line bg-paper p-5 transition-colors hover:border-forest/40"
               >
                 <span className="font-medium">{s.name}</span>

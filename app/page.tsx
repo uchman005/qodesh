@@ -28,16 +28,31 @@ export default function Home() {
       <section className="relative overflow-hidden bg-forest-deep">
         <HeroBackground src={heroImages.home} priority />
         <Container className="relative flex flex-col gap-8 py-24 sm:py-32">
-          <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent-soft">
+          <span
+            data-aos="fade-up"
+            className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent-soft"
+          >
             {site.tradeName} &middot; Baltimore, MD &middot; Est. {site.founded}
           </span>
-          <h1 className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-paper sm:text-6xl sm:leading-tight">
+          <h1
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-paper sm:text-6xl sm:leading-tight"
+          >
             {site.tagline}
           </h1>
-          <p className="max-w-xl text-lg leading-relaxed text-paper/70">
+          <p
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className="max-w-xl text-lg leading-relaxed text-paper/70"
+          >
             {site.description}
           </p>
-          <div className="flex flex-col gap-4 sm:flex-row">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="300"
+            className="flex flex-col gap-4 sm:flex-row"
+          >
             <Link
               href="/services"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-paper px-6 py-3 text-sm font-semibold text-forest-deep transition-colors hover:bg-paper-dim"
@@ -101,10 +116,12 @@ export default function Home() {
             description="A sample of the sites and structures our disciplines have carried from plan to completion."
           />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((service) => (
+            {services.map((service, i) => (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
+                data-aos="zoom-in"
+                data-aos-delay={i * 100}
                 className="group flex flex-col gap-3"
               >
                 <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-line">
@@ -125,7 +142,7 @@ export default function Home() {
 
       <section className="border-y border-line bg-paper py-20 sm:py-28">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div className="flex flex-col gap-6">
+          <div data-aos="fade-right" className="flex flex-col gap-6">
             <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent">
               Our philosophy
             </span>
@@ -147,8 +164,13 @@ export default function Home() {
           </div>
 
           <ol className="flex flex-col gap-6">
-            {site.process.map((item) => (
-              <li key={item.step} className="flex gap-5 rounded-2xl border border-line bg-paper p-6">
+            {site.process.map((item, i) => (
+              <li
+                key={item.step}
+                data-aos="fade-left"
+                data-aos-delay={i * 100}
+                className="flex gap-5 rounded-2xl border border-line bg-paper p-6"
+              >
                 <span className="font-mono text-sm text-forest">{item.step}</span>
                 <div className="flex flex-col gap-1">
                   <h3 className="text-lg font-semibold tracking-tight">{item.name}</h3>
@@ -162,7 +184,7 @@ export default function Home() {
 
       <section className="py-20 sm:py-28">
         <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div className="flex flex-col gap-3">
+          <div data-aos="fade-up" className="flex flex-col gap-3">
             <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent">
               Credentials
             </span>
@@ -171,9 +193,11 @@ export default function Home() {
             </h2>
           </div>
           <div className="flex flex-wrap gap-4">
-            {certifications.map((cert) => (
+            {certifications.map((cert, i) => (
               <div
                 key={cert.abbr}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
                 className="flex flex-1 min-w-[220px] flex-col gap-1 rounded-2xl border border-line bg-paper-dim p-6"
               >
                 <span className="font-mono text-2xl font-semibold text-forest">
@@ -182,7 +206,11 @@ export default function Home() {
                 <span className="text-sm text-ink/60">{cert.name}</span>
               </div>
             ))}
-            <div className="flex flex-1 min-w-[220px] flex-col gap-2 rounded-2xl border border-dashed border-line p-6">
+            <div
+              data-aos="fade-up"
+              data-aos-delay={certifications.length * 100}
+              className="flex flex-1 min-w-[220px] flex-col gap-2 rounded-2xl border border-dashed border-line p-6"
+            >
               <span className="text-sm font-semibold text-ink">{sisterCompany.name}</span>
               <p className="text-sm leading-relaxed text-ink/60">
                 {sisterCompany.description}

@@ -4,6 +4,7 @@ import { Container } from "../_components/container";
 import { SectionHeading } from "../_components/section-heading";
 import { CtaBand } from "../_components/cta-band";
 import { HeroBackground } from "../_components/hero-background";
+import { JsonLd } from "../_components/json-ld";
 import { ArrowRightIcon, LeafIcon, LinkedInIcon } from "../_components/icons";
 import {
   certifications,
@@ -14,13 +15,21 @@ import {
   site,
   sisterCompany,
 } from "../_lib/content";
+import { breadcrumbJsonLd, pageMetadata } from "../_lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About Us",
   description:
     "Founded in 1986 as Qodesh Engineering Services, Inc., Qodesh CM is a Baltimore engineering and construction management firm built on sustainable, Net Zero-minded design principles.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+  image: heroImages.about,
+  imageAlt: "A pond bordered by trees on a Qodesh CM project site",
+});
+
+const breadcrumbs = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+]);
 
 const storyImage = services.find(
   (s) => s.slug === "civil-environmental-engineering"
@@ -30,6 +39,7 @@ const planningImage = services.find((s) => s.slug === "master-planning")!;
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={breadcrumbs} />
       <section className="relative overflow-hidden bg-forest-deep">
         <HeroBackground src={heroImages.about} priority />
         <Container className="relative flex flex-col gap-6 py-20 sm:py-28">
@@ -44,7 +54,7 @@ export default function AboutPage() {
 
       <section className="py-20 sm:py-28">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
-          <div className="flex flex-col gap-5">
+          <div data-aos="fade-right" className="flex flex-col gap-5">
             <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent">
               Our story
             </span>
@@ -70,7 +80,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div data-aos="fade-left" className="flex flex-col gap-4">
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-line">
               <Image
                 src={storyImage.image}
@@ -103,9 +113,11 @@ export default function AboutPage() {
       <section className="border-y border-line bg-paper-dim py-20 sm:py-28">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
           <ol className="order-2 flex flex-col gap-6 lg:order-1">
-            {site.process.map((item) => (
+            {site.process.map((item, i) => (
               <li
                 key={item.step}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
                 className="flex gap-5 rounded-2xl border border-line bg-paper p-6"
               >
                 <span className="font-mono text-sm text-forest">{item.step}</span>
@@ -143,9 +155,11 @@ export default function AboutPage() {
             description="Built on the Baldrige Excellence Framework's emphasis on systems thinking, visionary leadership, and organizational learning."
           />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {principles.map((principle) => (
+            {principles.map((principle, i) => (
               <div
                 key={principle.name}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
                 className="flex flex-col gap-2 rounded-2xl border border-line bg-paper-dim p-6"
               >
                 <h3 className="text-lg font-semibold tracking-tight">{principle.name}</h3>
@@ -165,9 +179,11 @@ export default function AboutPage() {
             title="The team behind the work"
           />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {leadership.map((person) => (
+            {leadership.map((person, i) => (
               <div
                 key={person.name}
+                data-aos="fade-up"
+                data-aos-delay={(i % 3) * 100}
                 className="flex flex-col overflow-hidden rounded-2xl border border-line bg-paper"
               >
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-paper-dim">
@@ -209,7 +225,7 @@ export default function AboutPage() {
 
       <section className="py-20 sm:py-28">
         <Container className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-          <div className="flex flex-col gap-4">
+          <div data-aos="fade-right" className="flex flex-col gap-4">
             <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent">
               Certifications
             </span>
@@ -236,7 +252,10 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4 rounded-2xl border border-line bg-forest p-8 text-paper">
+          <div
+            data-aos="fade-left"
+            className="flex flex-col gap-4 rounded-2xl border border-line bg-forest p-8 text-paper"
+          >
             <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent-soft">
               Sister company
             </span>

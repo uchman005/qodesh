@@ -15,7 +15,7 @@ export function SectionHeading({
   const subtleColor = tone === "dark" ? "text-paper/70" : "text-ink/60";
 
   return (
-    <div className={`flex max-w-2xl flex-col gap-3 ${alignClass}`}>
+    <div className={`flex max-w-2xl flex-col gap-3 ${alignClass}`} data-aos="fade-up">
       {eyebrow ? (
         <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent">
           {eyebrow}

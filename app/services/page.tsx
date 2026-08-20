@@ -4,19 +4,29 @@ import Link from "next/link";
 import { Container } from "../_components/container";
 import { CtaBand } from "../_components/cta-band";
 import { HeroBackground } from "../_components/hero-background";
+import { JsonLd } from "../_components/json-ld";
 import { ArrowRightIcon } from "../_components/icons";
 import { heroImages, services, site } from "../_lib/content";
+import { breadcrumbJsonLd, pageMetadata } from "../_lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
     "Master planning, structural engineering, civil and environmental engineering, and project & construction management from Qodesh CM in Baltimore, MD.",
-  alternates: { canonical: "/services" },
-};
+  path: "/services",
+  image: heroImages.services,
+  imageAlt: "Concrete formwork and rebar under construction at Holtwood Dam",
+});
+
+const breadcrumbs = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/services" },
+]);
 
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbs} />
       <section className="relative overflow-hidden bg-forest-deep">
         <HeroBackground src={heroImages.services} priority />
         <Container className="relative flex flex-col gap-6 py-20 sm:py-28">
@@ -39,6 +49,8 @@ export default function ServicesPage() {
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
+              data-aos="fade-up"
+              data-aos-delay={(i % 2) * 100}
               className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-paper transition-colors hover:border-forest/40"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-paper-dim">

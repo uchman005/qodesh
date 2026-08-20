@@ -23,6 +23,8 @@ export function ServiceCard({
   return (
     <Link
       href={href}
+      data-aos="fade-up"
+      data-aos-delay={((index - 1) % 4) * 100}
       className="group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-paper transition-colors hover:border-forest/40"
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-paper-dim">

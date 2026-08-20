@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
 import { Container } from "../_components/container";
 import { HeroBackground } from "../_components/hero-background";
+import { JsonLd } from "../_components/json-ld";
 import { ArrowRightIcon, CompassIcon } from "../_components/icons";
 import { heroImages, site } from "../_lib/content";
+import { breadcrumbJsonLd, pageMetadata } from "../_lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
     "Reach Qodesh CM at 30 W. 25th Street, Baltimore, MD 21218, by phone at 410.662.5599, or by email at info@qodeshcm.com.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+  image: heroImages.contact,
+  imageAlt: "Campus building survey map for the University of Maryland Eastern Shore",
+});
+
+const breadcrumbs = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact" },
+]);
 
 export default function ContactPage() {
   const fullAddress = `${site.contact.addressLine1}, ${site.contact.addressLine2}`;
@@ -22,6 +31,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbs} />
       <section className="relative overflow-hidden bg-forest-deep">
         <HeroBackground src={heroImages.contact} priority />
         <Container className="relative flex flex-col gap-6 py-20 sm:py-28">
@@ -40,7 +50,10 @@ export default function ContactPage() {
 
       <section className="py-20 sm:py-28">
         <Container className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <div className="flex flex-col gap-6 rounded-2xl border border-line bg-paper-dim p-8">
+          <div
+            data-aos="fade-up"
+            className="flex flex-col gap-6 rounded-2xl border border-line bg-paper-dim p-8"
+          >
             <h2 className="text-xl font-semibold tracking-tight">Office</h2>
             <address className="flex flex-col gap-1 text-base not-italic leading-relaxed text-ink/75">
               <span>{site.contact.addressLine1}</span>
@@ -58,7 +71,11 @@ export default function ContactPage() {
             </a>
           </div>
 
-          <div className="flex flex-col gap-6 rounded-2xl border border-line bg-paper-dim p-8">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="flex flex-col gap-6 rounded-2xl border border-line bg-paper-dim p-8"
+          >
             <h2 className="text-xl font-semibold tracking-tight">Get in touch</h2>
             <div className="flex flex-col gap-4">
               <a
@@ -82,7 +99,7 @@ export default function ContactPage() {
 
       <section className="pb-20 sm:pb-28">
         <Container>
-          <div className="overflow-hidden rounded-2xl border border-line">
+          <div data-aos="fade-up" className="overflow-hidden rounded-2xl border border-line">
             <iframe
               title={`Map showing ${site.name}'s office at ${fullAddress}`}
               src={mapsEmbedSrc}

@@ -7,14 +7,21 @@ export function CtaBand() {
   return (
     <section className="relative overflow-hidden bg-forest-deep py-20 sm:py-28">
       <Container className="relative flex flex-col items-start gap-6 sm:items-center sm:text-center">
-        <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-paper sm:text-4xl">
+        <h2
+          data-aos="fade-up"
+          className="max-w-2xl text-3xl font-semibold tracking-tight text-paper sm:text-4xl"
+        >
           Have a site, structure, or community in mind?
         </h2>
-        <p className="max-w-xl text-base leading-relaxed text-paper/70 sm:text-lg">
+        <p
+          data-aos="fade-up"
+          data-aos-delay="100"
+          className="max-w-xl text-base leading-relaxed text-paper/70 sm:text-lg"
+        >
           Tell us where you&apos;re starting from. We&apos;ll help you plan, design, and
           implement it the right way.
         </p>
-        <div className="flex flex-col gap-4 sm:flex-row">
+        <div data-aos="fade-up" data-aos-delay="200" className="flex flex-col gap-4 sm:flex-row">
           <Link
             href="/contact"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-paper px-6 py-3 text-sm font-semibold text-forest-deep transition-colors hover:bg-paper-dim"
