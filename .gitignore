@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# reference assets pulled from the old site (not part of the app)
+/original-assets
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
