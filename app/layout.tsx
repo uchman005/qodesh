@@ -77,6 +77,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
+        {/* Served as a static link rather than a CSS import: AOS's single-line
+            minified stylesheet crashes the Turbopack/Lightning CSS pipeline. */}
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel="stylesheet" href="/aos.css" precedence="default" />
         <OrganizationJsonLd />
         <AosInit />
         <a
