@@ -34,7 +34,7 @@ export default function ServicesPage() {
             Services
           </span>
           <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-paper sm:text-5xl">
-            Four disciplines. One accountable team.
+            Four disciplines, one standard of excellence.
           </h1>
           <p className="max-w-xl text-lg leading-relaxed text-paper/70">
             {site.name} carries projects from master plan to punch list, so nothing gets

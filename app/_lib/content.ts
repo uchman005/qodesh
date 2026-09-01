@@ -8,7 +8,7 @@ export const site = {
   foundedISO: "1986-01-01",
   description:
     "Qodesh CM is a Baltimore-based structural and civil engineering firm delivering master planning, structural engineering design, design-build, and construction management with a sustainability-first approach across the northeastern U.S.",
-  tagline: "Engineering that gives back to the built environment.",
+  tagline: "Engineering for a Greener World.",
   distinction:
     "One of the longest-operating minority-owned businesses in the civil and structural engineering design and construction industry.",
   serviceRegion: "Northeastern U.S., from Virginia to New York",
@@ -197,11 +197,11 @@ export const leadership = [
     linkedin: null,
   },
   {
-    name: "Anthony Stewart",
+    name: "Marcel Obiefuna",
     title: "IT Technical Support Officer",
     bio: "Keeps the firm's project and design tooling running.",
-    photo: "/images/team/stewart.webp",
-    linkedin: null,
+    photo: "/images/team/uche.webp",
+    linkedin: "https://www.linkedin.com/in/obiefuna-marcel/",
   },
 ] as const;
 

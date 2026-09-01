@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     "sustainable engineering",
     "DBE MBE certified engineering firm",
     "Qodesh CM",
+    "QPS Inc"
   ],
   authors: [{ name: site.legalName }],
   creator: site.legalName,
