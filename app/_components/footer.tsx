@@ -42,6 +42,9 @@ export function Footer() {
               {link.label}
             </Link>
           ))}
+          <Link href="/projects" className="text-sm text-ink/70 hover:text-ink">
+            Project Catalogue
+          </Link>
           <a
             href={site.basecampUrl}
             target="_blank"

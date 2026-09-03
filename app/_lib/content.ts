@@ -52,7 +52,7 @@ export const site = {
 
 export const heroImages = {
   home: "/images/services/project-construction-management.webp",
-  about: "/images/site-river.webp",
+  about: "/images/site/river.webp",
   services: "/images/services/structural-engineering.webp",
   contact: "/images/services/master-planning.webp",
 } as const;

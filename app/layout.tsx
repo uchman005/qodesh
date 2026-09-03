@@ -80,7 +80,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* Served as a static link rather than a CSS import: AOS's single-line
             minified stylesheet crashes the Turbopack/Lightning CSS pipeline. */}
         {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel="stylesheet" href="/aos.css" precedence="default" />
+        <link rel="stylesheet" href="/vendor/aos.css" precedence="default" />
         <OrganizationJsonLd />
         <AosInit />
         <a

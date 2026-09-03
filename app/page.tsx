@@ -12,8 +12,9 @@ import {
   MasterPlanningIcon,
   StructuralEngineeringIcon,
 } from "./_components/icons";
-import Image from "next/image";
+import { ProjectCard } from "./_components/project-card";
 import { certifications, heroImages, services, site, sisterCompany } from "./_lib/content";
+import { featuredProjects } from "./_lib/projects";
 
 const serviceIcons = [
   MasterPlanningIcon,
@@ -110,31 +111,24 @@ export default function Home() {
 
       <section className="bg-paper-dim py-20 sm:py-28">
         <Container className="flex flex-col gap-12">
-          <SectionHeading
-            eyebrow="Featured work"
-            title="Projects our services stand behind"
-            description="A sample of the sites and structures our disciplines have carried from plan to completion."
-          />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((service, i) => (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}`}
-                data-aos="zoom-in"
-                data-aos-delay={i * 100}
-                className="group flex flex-col gap-3"
-              >
-                <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-line">
-                  <Image
-                    src={service.image}
-                    alt={service.imageAlt}
-                    fill
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <p className="text-sm leading-snug text-ink/60">{service.project}</p>
-              </Link>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              eyebrow="Featured projects"
+              title="A sample of what we've built"
+              description="From dam expansions to campus master plans, a look at the range of work our four disciplines carry from plan to completion."
+            />
+            <Link
+              href="/projects"
+              data-aos="fade-up"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-forest hover:text-forest-soft"
+            >
+              Browse the project catalogue
+              <ArrowRightIcon className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredProjects.map((project, i) => (
+              <ProjectCard key={project.slug} project={project} index={i} />
             ))}
           </div>
         </Container>

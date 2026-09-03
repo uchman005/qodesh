@@ -14,7 +14,9 @@ import {
   ArrowRightIcon,
 } from "../../_components/icons";
 import { services } from "../../_lib/content";
+import { projectsByCategory } from "../../_lib/projects";
 import { breadcrumbJsonLd, pageMetadata, serviceJsonLd } from "../../_lib/seo";
+import { ProjectCard } from "../../_components/project-card";
 
 const serviceIcons = {
   "master-planning": MasterPlanningIcon,
@@ -53,6 +55,7 @@ export default async function ServiceDetailPage(
   const service = services[index];
   const Icon = serviceIcons[service.slug];
   const other = services.filter((s) => s.slug !== service.slug);
+  const categoryProjects = projectsByCategory(service.slug);
   const breadcrumbs = breadcrumbJsonLd([
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
@@ -131,6 +134,35 @@ export default async function ServiceDetailPage(
           </figure>
         </Container>
       </section>
+
+      {categoryProjects.length > 0 ? (
+        <section className="py-16 sm:py-20">
+          <Container className="flex flex-col gap-8">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div className="flex flex-col gap-2">
+                <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                  Project catalogue
+                </span>
+                <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                  {service.name} projects
+                </h2>
+              </div>
+              <Link
+                href={`/projects/${service.slug}`}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-forest hover:text-forest-soft"
+              >
+                View more in the catalogue
+                <ArrowRightIcon className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {categoryProjects.slice(0, 6).map((project, i) => (
+                <ProjectCard key={project.slug} project={project} index={i} />
+              ))}
+            </div>
+          </Container>
+        </section>
+      ) : null}
 
       <section className="border-y border-line bg-paper-dim py-16 sm:py-20">
         <Container className="flex flex-col gap-8">
