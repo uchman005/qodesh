@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "./_components/container";
 import { SectionHeading } from "./_components/section-heading";
 import { ServiceCard } from "./_components/service-card";
@@ -114,7 +115,7 @@ export default function Home() {
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
               eyebrow="Featured projects"
-              title="A sample of what we've built"
+              title="Representative Projects"
               description="From dam expansions to campus master plans, a look at the range of work our four disciplines carry from plan to completion."
             />
             <Link
@@ -137,6 +138,15 @@ export default function Home() {
       <section className="border-y border-line bg-paper py-20 sm:py-28">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div data-aos="fade-right" className="flex flex-col gap-6">
+            <div className="relative h-20 w-20 overflow-hidden rounded-2xl border border-line">
+              <Image
+                src="/images/site/sprout.webp"
+                alt="A seedling sprouting from soil, growing toward a greener world"
+                fill
+                sizes="80px"
+                className="object-cover"
+              />
+            </div>
             <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent">
               Our philosophy
             </span>

@@ -4,10 +4,13 @@ export const site = {
   predecessorName: "Qodesh Engineering Services, Inc.",
   tradeName: "Qodesh CM & Qodesh Engineering",
   url: "https://qodeshcm.com",
-  founded: 1986,
-  foundedISO: "1986-01-01",
+  founded: 1996,
+  foundedISO: "1996-01-01",
+  legacyYears: "40+",
   description:
     "Qodesh CM is a Baltimore-based structural and civil engineering firm delivering master planning, structural engineering design, design-build, and construction management with a sustainability-first approach across the northeastern U.S.",
+  mission:
+    "To provide best-of-class engineering and project management services to each of our customers, and to be of ever-increasing value to our global community.",
   tagline: "Engineering for a Greener World.",
   distinction:
     "One of the longest-operating minority-owned businesses in the civil and structural engineering design and construction industry.",
@@ -88,7 +91,9 @@ export const services = [
       "Structural engineering design services",
       "Design-build project delivery",
       "Structural inspections and condition assessments",
+      "Formwork design and review",
       "Renovation and adaptive-reuse structural analysis",
+      "Religious and institutional facility consulting",
     ],
     image: "/images/services/structural-engineering.webp",
     imageAlt: "Concrete formwork and rebar under construction at Holtwood Dam",

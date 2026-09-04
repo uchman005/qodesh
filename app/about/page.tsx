@@ -20,7 +20,7 @@ import { breadcrumbJsonLd, pageMetadata } from "../_lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "About Us",
   description:
-    "Founded in 1986 as Qodesh Engineering Services, Inc., Qodesh CM is a Baltimore engineering and construction management firm built on sustainable, Net Zero-minded design principles.",
+    "Qodesh CM is the trade name of QPS, Inc., a Maryland corporation established in 1996 whose firm and predecessors span over forty years of structural, civil, and project management services.",
   path: "/about",
   image: heroImages.about,
   imageAlt: "A pond bordered by trees on a Qodesh CM project site",
@@ -47,7 +47,7 @@ export default function AboutPage() {
             About {site.name}
           </span>
           <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-paper sm:text-5xl">
-            Nearly four decades of engineering with the environment, not around it.
+            Over forty years of engineering with the environment, not around it.
           </h1>
         </Container>
       </section>
@@ -62,11 +62,14 @@ export default function AboutPage() {
               From {site.predecessorName} to {site.name}
             </h2>
             <p className="text-base leading-relaxed text-ink/70">
-              Our roots trace back to {site.founded}, when {site.predecessorName} was
-              established in Baltimore. That firm is now the predecessor to {site.legalName},
-              which continues the practice today under the {site.tradeName} names.
-              Over {new Date().getFullYear() - site.founded}+ years, that continuity has
-              made us {site.distinction.charAt(0).toLowerCase() + site.distinction.slice(1)}
+              {site.name} is the trade name of {site.legalName}, a Maryland corporation
+              established in {site.founded}. The firm and its predecessors, including{" "}
+              {site.predecessorName}, span {site.legacyYears} years of continuous practice
+              in Baltimore &mdash; a history that has made us{" "}
+              {site.distinction.charAt(0).toLowerCase() + site.distinction.slice(1)}
+            </p>
+            <p className="rounded-xl border border-line bg-paper-dim p-4 text-sm italic leading-relaxed text-ink/70">
+              &ldquo;{site.mission}&rdquo;
             </p>
             <p className="text-base leading-relaxed text-ink/70">
               Our project work spans the {site.serviceRegion.toLowerCase()}, serving

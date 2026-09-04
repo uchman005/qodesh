@@ -71,6 +71,14 @@ export const projects: Project[] = [
     images: [img("administration-building-green-roof", 1, "Administration Building green roof at the University of Maryland Baltimore County")],
   },
   {
+    slug: "railway-equipment-structural-support",
+    title: "Railway Equipment Structural Support",
+    client: "BBM Railway Equipment, LLC",
+    role: "Structural Engineer of Record",
+    category: "structural-engineering",
+    images: [img("railway-equipment-structural-support", 1, "Railway Equipment Structural Support at BBM Railway Equipment, LLC")],
+  },
+  {
     slug: "arlington-elementary-school",
     title: "Arlington Elementary School",
     location: "Baltimore, Maryland",

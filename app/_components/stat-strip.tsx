@@ -1,9 +1,8 @@
 import { site } from "@/app/_lib/content";
 
 export function StatStrip() {
-  const years = new Date().getFullYear() - site.founded;
   const stats = [
-    { value: `${years}+`, label: "Years in practice" },
+    { value: site.legacyYears, label: "Years in practice" },
     { value: "4", label: "Core disciplines" },
     { value: "DBE / MBE", label: "Certified firm" },
     { value: "2", label: "Continents served" },
